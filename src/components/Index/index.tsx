@@ -20,6 +20,6 @@ export const Index: FC<Props> = ({ prefectureList }) => {
         populationList={populationList}
         prefectureList={prefectureList}
       />
-    </div>
+    </>
   );
 };
