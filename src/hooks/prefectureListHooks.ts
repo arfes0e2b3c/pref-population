@@ -5,7 +5,7 @@ type Prefecture = {
   prefName: string;
 };
 
-export const usePrefectureList = async (): Promise<Prefecture[]> => {
+export const fetchPrefectureList = async (): Promise<Prefecture[]> => {
   const prefectureList = await initializeAxios()
     .get('/prefectures')
     .then(response => {
