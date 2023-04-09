@@ -1,20 +1,28 @@
 import Head from 'next/head';
-import Image from 'next/image';
-import { Inter } from 'next/font/google';
 import styles from '@/styles/Home.module.css';
-import { useEffect, useState } from 'react';
-import { GetAllPrefectures } from '../api/axios';
 import { Index } from '@/components/Index';
+import { NextPage } from 'next';
+import { usePrefectureList } from '@/components/Index/hooks/prefectureListHooks';
+
+type Prefecture = {
+  prefCode: number;
+  prefName: string;
+};
+
+type HomeProps = {
+  prefectureList: Prefecture[];
+};
 
 export const getStaticProps = async () => {
-  const prefectures = await new GetAllPrefectures().handler();
+  const prefectureList = await usePrefectureList();
+
   return {
     props: {
-      prefectures,
+      prefectureList,
     },
   };
 };
-const Home = ({ prefectures }) => {
+const Home: NextPage<HomeProps> = ({ prefectureList }) => {
   return (
     <>
       <Head>
@@ -24,7 +32,7 @@ const Home = ({ prefectures }) => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <main className={styles.main}>
-        <Index prefectures={prefectures} />
+        <Index prefectureList={prefectureList} />
       </main>
     </>
   );
