@@ -19,7 +19,7 @@ type PrefCheckBoxProps = {
 const PrefCheckBox: FC<PrefCheckBoxProps> = ({ pref, onChange }) => {
   const [isClicked, setIsClicked] = useState(false);
   return (
-    <div className={isClicked ? clicked : checkbox}>
+    <div className={[isClicked ? clicked : '', checkbox].join(' ')}>
       <input
         type='checkbox'
         id={pref.prefCode}
