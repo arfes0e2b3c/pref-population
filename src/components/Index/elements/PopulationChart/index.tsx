@@ -50,7 +50,7 @@ export const PopulationChart: FC<PopulationChartProps> = ({
 }) => {
   return (
     <div className={populationChart}>
-      <ResponsiveContainer width='100%' height={400}>
+      <ResponsiveContainer width='100%' height={300}>
         <LineChart margin={{ top: 10, left: 10, right: 20 }}>
           {populationList &&
             populationList.map(population => {
