@@ -2,13 +2,13 @@ import { initializeAxios } from '@/api/axios';
 import { useState } from 'react';
 
 type PopulationData = {
-  index: Number;
+  index: string;
   data: Object;
 };
 
 const usePopulationList = () => {
   let [populationList, setPopulationList] = useState<PopulationData[]>([]);
-  const fetchPopulationList = async (prefectureList: Number[]) => {
+  const fetchPopulationList = async (prefectureList: string[]) => {
     let populationDataList = [];
     for (const prefecture of prefectureList) {
       const population = await initializeAxios().get(

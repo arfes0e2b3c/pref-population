@@ -3,7 +3,7 @@ import PrefList from './elements/PrefList';
 import usePopulationList from './hooks/populationListHooks';
 
 type Prefecture = {
-  prefCode: number;
+  prefCode: string;
   prefName: string;
 };
 type Props = {

@@ -3,16 +3,16 @@ import PrefCheckBox from './elements/PrefCheckBox';
 import { prefList } from './styles/prefList.css';
 
 type Prefecture = {
-  prefCode: number;
+  prefCode: string;
   prefName: string;
 };
 type Props = {
   prefectureList: Prefecture[];
-  onChange: (checkedList: Number[]) => void;
+  onChange: (checkedList: string[]) => void;
 };
 
 const PrefList: FC<Props> = ({ prefectureList, onChange }) => {
-  const [checkedList, setCheckedList] = useState<Number[]>([]);
+  const [checkedList, setCheckedList] = useState<string[]>([]);
   useEffect(() => {
     onChange(checkedList);
   }, [checkedList]);
@@ -23,7 +23,7 @@ const PrefList: FC<Props> = ({ prefectureList, onChange }) => {
           <PrefCheckBox
             key={pref.prefCode}
             pref={pref}
-            onChange={(prefCode: Number, checked: Boolean) => {
+            onChange={(prefCode, checked) => {
               if (checked) {
                 setCheckedList([...checkedList, prefCode]);
               } else {
