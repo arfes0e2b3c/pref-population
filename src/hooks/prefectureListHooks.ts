@@ -1,9 +1,5 @@
 import { initializeAxios } from '@/api/axios';
-
-type Prefecture = {
-  prefCode: string;
-  prefName: string;
-};
+import { Prefecture } from '@/types/types';
 
 export const fetchPrefectureList = async (): Promise<Prefecture[]> => {
   const prefectureList = await initializeAxios()
