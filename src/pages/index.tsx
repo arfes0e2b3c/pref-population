@@ -9,7 +9,7 @@ type HomeProps = {
   prefectureList: Prefecture[];
 };
 
-export const getStaticProps = async () => {
+export async function getStaticProps() {
   const prefectureList = await fetchPrefectureList();
 
   return {
@@ -17,7 +17,7 @@ export const getStaticProps = async () => {
       prefectureList,
     },
   };
-};
+}
 const Home: NextPage<HomeProps> = ({ prefectureList }) => {
   return (
     <>
