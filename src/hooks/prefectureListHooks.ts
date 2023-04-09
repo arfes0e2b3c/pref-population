@@ -1,7 +1,7 @@
 import { initializeAxios } from '@/api/axios';
 
 type Prefecture = {
-  prefCode: number;
+  prefCode: string;
   prefName: string;
 };
 

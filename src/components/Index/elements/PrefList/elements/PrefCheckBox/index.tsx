@@ -8,13 +8,13 @@ import {
 } from './styles/prefCheckBox.css';
 
 type Prefecture = {
-  prefCode: number;
+  prefCode: string;
   prefName: string;
 };
 
 type PrefCheckBoxProps = {
   pref: Prefecture;
-  onChange: (prefCode: String, checked: Boolean) => void;
+  onChange: (prefCode: string, checked: boolean) => void;
 };
 
 const PrefCheckBox: FC<PrefCheckBoxProps> = ({ pref, onChange }) => {
