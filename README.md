@@ -1,38 +1,49 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## 都道府県人口統計サイト
 
-## Getting Started
+都道府県別で人口の推移を確認することができるWebサイトです。
 
-First, run the development server:
+[実際のアプリ](https://pref-population.vercel.app/)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+### 導入方法
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. `git clone`
+2. `npm install`
+3. ルートディレクトリに.env.localを作成し、以下の項目を追加してください
+  > NEXT_PUBLIC_RESAS_API_KEY=[RESASのAPIキー]
+  >
+  > NEXT_PUBLIC_RESAS_BASE_URL=https://opendata.resas-portal.go.jp/api/v1
+4. `npm run dev`
+5. http://localhost:3000 にアクセス
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+### 使用技術
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+#### ・Next.js
+実際にインターンで使用するのがNext.jsだということに加え、今まで自分が触れてこなかったので挑戦という意味も込めて選択しました。ReactではなくNextを選択した理由としては短い期間で本質的な開発に注力するためにはNextを選択するべきだと考えたからです。
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+#### ・TypeScript
+型安全に開発することができるので選択しました。
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+#### ・vanilla-extract
+css-in-jsについてはいくつか候補(styled-components, tailwind)はありましたが、HTML部分の可読性や型安全性や定義参照などのDXの点で優れていると感じたため選択しました。
 
-## Learn More
+#### ・Jest/React-Testing-Library
+特に他に候補がない様に思われたので特に選択理由はありません。
 
-To learn more about Next.js, take a look at the following resources:
+#### ・Vercel
+Nextとの親和性や自動デプロイが魅力的だと感じたので選択しました
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+#### ・github
+選択理由は特にありません。機能ごとにブランチを切ってmainブランチにマージするという流れで開発を行いました。
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+#### ・Recharts.js
+コンポーネントとしてimportできるのでJSベースでインポートする必要があるhighchartより使い勝手が良かったのと、UIの綺麗さで選択しました。
 
-## Deploy on Vercel
+### 候補だった技術
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+#### ・react-query/swr
+データフェッチやグローバルな状態管理で利用しようかと考えたのですが規模的にあまり必要性が感じられなかったので使用を諦めました。
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### デザインパターン
+
+#### ・TreeDesign
+最初はatomic designが候補にありましたが、①今回の規模の開発でmoleclesやorganismを分けられる自信がなく、また分ける必要性を感じなかったこと ②DOMに即したディレクトリ構成にすることでより直感と合った開発をすることができる、という２点からTreeDesignを採用しています。
