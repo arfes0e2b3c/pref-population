@@ -20,7 +20,12 @@ type PopulationChartProps = {
   populationList: Population[];
   prefectureList: Prefecture[];
 };
-const CustomTooltip = ({ active, payload, label }) => {
+type CustomTooltipProps = {
+  active: boolean;
+  payload: any[];
+  label: number;
+};
+const CustomTooltip: FC<CustomTooltipProps> = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
     return (
       <div className={customTooltip}>
@@ -82,7 +87,9 @@ export const PopulationChart: FC<PopulationChartProps> = ({
             tickCount={5}
             tickFormatter={population => population / 10000 + '万'}
           />
-          <Tooltip content={<CustomTooltip />} />
+          <Tooltip
+            content={<CustomTooltip active={false} payload={[]} label={0} />}
+          />
         </LineChart>
       </ResponsiveContainer>
     </div>
