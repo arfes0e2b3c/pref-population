@@ -3,11 +3,7 @@ import styles from '@/styles/Home.module.css';
 import { Index } from '@/components/Index';
 import { NextPage } from 'next';
 import { fetchPrefectureList } from '@/hooks/prefectureListHooks';
-
-type Prefecture = {
-  prefCode: number;
-  prefName: string;
-};
+import { Prefecture } from '@/types/types';
 
 type HomeProps = {
   prefectureList: Prefecture[];
