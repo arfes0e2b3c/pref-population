@@ -2,6 +2,7 @@ import { FC, useState } from 'react';
 import {
   checkbox,
   checkboxLabel,
+  checkboxLabelBox,
   clicked,
   disable,
 } from './styles/prefCheckBox.css';
@@ -29,9 +30,11 @@ const PrefCheckBox: FC<PrefCheckBoxProps> = ({ pref, onChange }) => {
         }}
         className={disable}
       />
-      <label className={checkboxLabel} htmlFor={pref.prefCode}>
-        {pref.prefName}
-      </label>
+      <div className={checkboxLabelBox}>
+        <label className={checkboxLabel} htmlFor={pref.prefCode}>
+          {pref.prefName}
+        </label>
+      </div>
     </div>
   );
 };
