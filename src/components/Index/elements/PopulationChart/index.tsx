@@ -1,6 +1,6 @@
 import { Prefecture } from '@/types/types';
 import { supplyStrokeColor } from '@/utils/colors';
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import {
   LineChart,
   Line,
@@ -15,6 +15,7 @@ import {
   populationChart,
   tooltipLabel,
 } from './styles/populationChart.css';
+import { ModeButtonList } from './elements/ModeButtonList';
 type Population = any;
 type PopulationChartProps = {
   populationList: Population[];
@@ -48,15 +49,20 @@ export const PopulationChart: FC<PopulationChartProps> = ({
   populationList,
   prefectureList,
 }) => {
+  const [currentMode, setCurrentMode] = useState<number>(0);
   return (
     <div className={populationChart}>
+      <ModeButtonList
+        currentMode={currentMode}
+        setCurrentMode={setCurrentMode}
+      />
       <ResponsiveContainer width='100%' height={300}>
         <LineChart margin={{ top: 10, left: 10, right: 20 }}>
           {populationList &&
             populationList.map(population => {
               return (
                 <Line
-                  data={population['data'][0]['data']}
+                  data={population['data'][currentMode]['data']}
                   key={population['index']}
                   type='basis'
                   dataKey='value'
