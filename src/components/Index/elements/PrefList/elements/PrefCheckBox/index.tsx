@@ -1,4 +1,11 @@
 import { FC, useState } from 'react';
+import {
+  checkbox,
+  checkboxLabel,
+  clicked,
+  disable,
+} from './styles/prefCheckBox.css';
+
 type Prefecture = {
   prefCode: number;
   prefName: string;
@@ -12,7 +19,7 @@ type PrefCheckBoxProps = {
 const PrefCheckBox: FC<PrefCheckBoxProps> = ({ pref, onChange }) => {
   const [isClicked, setIsClicked] = useState(false);
   return (
-    <div>
+    <div className={isClicked ? clicked : checkbox}>
       <input
         type='checkbox'
         id={pref.prefCode}
@@ -20,8 +27,11 @@ const PrefCheckBox: FC<PrefCheckBoxProps> = ({ pref, onChange }) => {
           setIsClicked(e.target.checked);
           onChange(pref.prefCode, e.target.checked);
         }}
+        className={disable}
       />
-      <label htmlFor={pref.prefCode}>{pref.prefName}</label>
+      <label className={checkboxLabel} htmlFor={pref.prefCode}>
+        {pref.prefName}
+      </label>
     </div>
   );
 };

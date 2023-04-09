@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from 'react';
 import PrefCheckBox from './elements/PrefCheckBox';
+import { prefList } from './styles/prefList.css';
 
 type Prefecture = {
   prefCode: number;
@@ -16,7 +17,7 @@ const PrefList: FC<Props> = ({ prefectureList, onChange }) => {
     onChange(checkedList);
   }, [checkedList]);
   return (
-    <>
+    <div className={prefList}>
       {prefectureList.map(pref => {
         return (
           <PrefCheckBox
@@ -32,7 +33,7 @@ const PrefList: FC<Props> = ({ prefectureList, onChange }) => {
           />
         );
       })}
-    </>
+    </div>
   );
 };
 
