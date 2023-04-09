@@ -2,19 +2,15 @@ import Head from 'next/head';
 import styles from '@/styles/Home.module.css';
 import { Index } from '@/components/Index';
 import { NextPage } from 'next';
-import { usePrefectureList } from '@/components/Index/hooks/prefectureListHooks';
-
-type Prefecture = {
-  prefCode: number;
-  prefName: string;
-};
+import { fetchPrefectureList } from '@/hooks/prefectureListHooks';
+import { Prefecture } from '@/types/types';
 
 type HomeProps = {
   prefectureList: Prefecture[];
 };
 
 export const getStaticProps = async () => {
-  const prefectureList = await usePrefectureList();
+  const prefectureList = await fetchPrefectureList();
 
   return {
     props: {

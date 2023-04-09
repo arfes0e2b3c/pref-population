@@ -1,11 +1,8 @@
 import { FC, useEffect, useState } from 'react';
 import PrefCheckBox from './elements/PrefCheckBox';
 import { prefList } from './styles/prefList.css';
+import { Prefecture } from '@/types/types';
 
-type Prefecture = {
-  prefCode: string;
-  prefName: string;
-};
 type Props = {
   prefectureList: Prefecture[];
   onChange: (checkedList: string[]) => void;

@@ -1,11 +1,8 @@
 import { FC } from 'react';
 import PrefList from './elements/PrefList';
 import usePopulationList from './hooks/populationListHooks';
+import { Prefecture } from '@/types/types';
 
-type Prefecture = {
-  prefCode: string;
-  prefName: string;
-};
 type Props = {
   prefectureList: Prefecture[];
 };
