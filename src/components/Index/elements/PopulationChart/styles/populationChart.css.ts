@@ -1,4 +1,6 @@
-import { style } from '@vanilla-extract/css';
+import { createVar, style } from '@vanilla-extract/css';
+
+export const strokeColor = createVar();
 
 export const populationChart = style({
   width: '100%',
@@ -18,4 +20,8 @@ export const customTooltip = style({
 export const tooltipLabel = style({
   fontWeight: 'bold',
   marginBottom: '10px',
+});
+
+export const tooltipItem = style({
+  color: strokeColor,
 });

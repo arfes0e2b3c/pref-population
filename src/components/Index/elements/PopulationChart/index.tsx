@@ -13,8 +13,11 @@ import {
 import {
   customTooltip,
   populationChart,
+  strokeColor,
+  tooltipItem,
   tooltipLabel,
 } from './styles/populationChart.css';
+import { assignInlineVars } from '@vanilla-extract/dynamic';
 import { ModeButtonList } from './elements/ModeButtonList';
 type Population = any;
 type PopulationChartProps = {
@@ -28,12 +31,21 @@ type CustomTooltipProps = {
 };
 const CustomTooltip: FC<CustomTooltipProps> = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
+    payload.sort((a, b) => {
+      return a.value < b.value ? 1 : -1;
+    });
     return (
       <div className={customTooltip}>
         <p className={tooltipLabel}>{label}</p>
         {payload.map(item => {
           return (
-            <p key={item.name} style={{ color: supplyStrokeColor(item.color) }}>
+            <p
+              className={tooltipItem}
+              key={item.name}
+              style={assignInlineVars({
+                [strokeColor]: item.color,
+              })}
+            >
               {item.name}
               {item.name.length !== 4 ? '　' : ''}：{item.value}
             </p>
