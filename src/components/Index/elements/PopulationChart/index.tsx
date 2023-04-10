@@ -31,6 +31,9 @@ type CustomTooltipProps = {
 };
 const CustomTooltip: FC<CustomTooltipProps> = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
+    payload.sort((a, b) => {
+      return a.value < b.value ? 1 : -1;
+    });
     return (
       <div className={customTooltip}>
         <p className={tooltipLabel}>{label}</p>
